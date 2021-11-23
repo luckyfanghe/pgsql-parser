@@ -37,7 +37,8 @@
   "scripts": {
     "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start",
     "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start",
-    "build": "npm run build:module && npm run build:main",
+    "build:website": "cross-env MODULE=production webpack --config webpack.config.js",
+    "build": "npm run build:module && npm run build:main && npm run build:website",
     "prepare": "npm run build",
     "lint": "eslint src --fix",
     "dev": "cross-env NODE_ENV=development babel-node src/index",
@@ -68,13 +69,16 @@
     "glob": "7.1.6",
     "jest": "^25.1.0",
     "prettier": "^2.1.2",
-    "regenerator-runtime": "^0.13.7"
+    "regenerator-runtime": "^0.13.7",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "browserify": "^17.0.0",
     "libpg-query": "13.1.1",
     "minimist": "^1.2.5",
     "pgsql-deparser": "^13.1.11",
-    "pgsql-enums": "^13.1.2"
+    "pgsql-enums": "^13.1.2",
+    "webpack": "^5.64.2"
   }
 }
